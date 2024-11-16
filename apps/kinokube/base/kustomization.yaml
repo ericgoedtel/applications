@@ -1,0 +1,3 @@
+---
+resources:
+  - git@github.com:ericgoedtel/kinokube.git//base?ref=main
