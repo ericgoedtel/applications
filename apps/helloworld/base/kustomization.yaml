@@ -1,0 +1,4 @@
+---
+# apps/helloworld/kustomization.yaml
+resources:
+  - namespace.yaml
