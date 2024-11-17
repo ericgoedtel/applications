@@ -1,0 +1,13 @@
+---
+namespace: kinokube
+
+resources:
+  - ../../base
+
+components:
+  - https://github.com/ericgoedtel/kinokube//components/overseerr?ref=main
+  - https://github.com/ericgoedtel/kinokube//components/plex?ref=main
+  - https://github.com/ericgoedtel/kinokube//components/prowlarr?ref=main
+  - https://github.com/ericgoedtel/kinokube//components/radarr?ref=main
+  - https://github.com/ericgoedtel/kinokube//components/sonarr?ref=main
+  - https://github.com/ericgoedtel/kinokube//components/transmission?ref=main
