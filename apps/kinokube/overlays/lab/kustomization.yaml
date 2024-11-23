@@ -5,9 +5,9 @@ resources:
   - ../../base
 
 components:
-  - https://github.com/ericgoedtel/kinokube//components/overseerr?ref=main
-  - https://github.com/ericgoedtel/kinokube//components/plex?ref=main
-  - https://github.com/ericgoedtel/kinokube//components/prowlarr?ref=main
-  - https://github.com/ericgoedtel/kinokube//components/radarr?ref=main
-  - https://github.com/ericgoedtel/kinokube//components/sonarr?ref=main
-  - https://github.com/ericgoedtel/kinokube//components/transmission?ref=main
+  - https://github.com/ericgoedtel/kinokube//components/overseerr?ref=add-ingresses
+  - https://github.com/ericgoedtel/kinokube//components/plex?ref=add-ingresses
+  - https://github.com/ericgoedtel/kinokube//components/prowlarr?ref=add-ingresses
+  - https://github.com/ericgoedtel/kinokube//components/radarr?ref=add-ingresses
+  - https://github.com/ericgoedtel/kinokube//components/sonarr?ref=add-ingresses
+  - https://github.com/ericgoedtel/kinokube//components/transmission?ref=add-ingresses
