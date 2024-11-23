@@ -5,9 +5,9 @@ resources:
   - ../../base
 
 components:
-  - https://github.com/ericgoedtel/kinokube//components/overseerr?ref=d7bb66e9a8e27094c73137c91303175080305294
-  - https://github.com/ericgoedtel/kinokube//components/plex?ref=d7bb66e9a8e27094c73137c91303175080305294
-  - https://github.com/ericgoedtel/kinokube//components/prowlarr?ref=d7bb66e9a8e27094c73137c91303175080305294
-  - https://github.com/ericgoedtel/kinokube//components/radarr?ref=d7bb66e9a8e27094c73137c91303175080305294
-  - https://github.com/ericgoedtel/kinokube//components/sonarr?ref=d7bb66e9a8e27094c73137c91303175080305294
-  - https://github.com/ericgoedtel/kinokube//components/transmission?ref=d7bb66e9a8e27094c73137c91303175080305294
+  - https://github.com/ericgoedtel/kinokube//components/overseerr?ref=0c54dfc0052446000c1b7d0ca61ecc2cdd26c5b9
+  - https://github.com/ericgoedtel/kinokube//components/plex?ref=0c54dfc0052446000c1b7d0ca61ecc2cdd26c5b9
+  - https://github.com/ericgoedtel/kinokube//components/prowlarr?ref=0c54dfc0052446000c1b7d0ca61ecc2cdd26c5b9
+  - https://github.com/ericgoedtel/kinokube//components/radarr?ref=0c54dfc0052446000c1b7d0ca61ecc2cdd26c5b9
+  - https://github.com/ericgoedtel/kinokube//components/sonarr?ref=0c54dfc0052446000c1b7d0ca61ecc2cdd26c5b9
+  - https://github.com/ericgoedtel/kinokube//components/transmission?ref=0c54dfc0052446000c1b7d0ca61ecc2cdd26c5b9
