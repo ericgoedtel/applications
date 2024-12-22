@@ -11,3 +11,13 @@ components:
   - https://github.com/ericgoedtel/kinokube//components/radarr?ref=20a251a777cb39a3d60c81c79e1d8dd4fda4331b
   - https://github.com/ericgoedtel/kinokube//components/sonarr?ref=20a251a777cb39a3d60c81c79e1d8dd4fda4331b
   - https://github.com/ericgoedtel/kinokube//components/transmission?ref=20a251a777cb39a3d60c81c79e1d8dd4fda4331b
+
+patches:
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+    patch: |
+      - op: add
+        path: /spec/revisionHistoryLimit
+        value: 2
