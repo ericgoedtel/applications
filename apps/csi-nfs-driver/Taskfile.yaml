@@ -1,0 +1,23 @@
+---
+version: "3"
+tasks:
+  helm-template:
+    cmds:
+      - >
+        helm template
+        --repo https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts
+        --version "v4.9.0"
+        --values {{.ROOT_DIR}}/values.yaml
+        --namespace kube-system
+        --skip-tests
+        csi-driver-nfs
+        > "{{.ROOT_DIR}}/base/resources.yaml"
+    sources:
+      - "{{.ROOT_DIR}}/values.yaml"
+    generates:
+      - "{{.ROOT_DIR}}/base/resources.yaml"
+  kustomize-build:
+    deps:
+      - helm-template
+    cmds:
+      - kustomize build {{.USER_WORKING_DIR}}
