@@ -27,7 +27,7 @@ spec:
       source:
         repoURL: https://github.com/ericgoedtel/applications
         targetRevision: HEAD
-        path: "apps/{{service}}"
+        path: "apps/{{service}}/overlays/{{shortName}}"
       destination:
         server: "{{server}}"
         namespace: kinokube
