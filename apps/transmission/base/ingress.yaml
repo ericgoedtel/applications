@@ -1,0 +1,17 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: transmission
+spec:
+  entryPoints: []
+  routes:
+  - kind: Rule
+    match: PathPrefix(`/transmission`)
+    middlewares: []
+    priority: 0
+    services:
+    - kind: Service
+      name: transmission
+      namespace: kinokube
+      port: webui

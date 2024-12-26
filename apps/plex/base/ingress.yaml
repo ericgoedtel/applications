@@ -1,0 +1,44 @@
+---
+# HTTPS forwarding
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRouteTCP
+metadata:
+  name: plex-tls-passthrough
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: HostSNIRegexp(`foo.plex.direct`,`{address:[0-9]+.[0-9]+.[0-9]+.[0-9]+}.{hash:[a-f0-9]+}.plex.direct`)
+      services:
+        - name: plex
+          port: webui
+  tls:
+    passthrough: true
+---
+# Normal path rewrite
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: htpc
+spec:
+  entryPoints: []
+  routes:
+  - kind: Rule
+    match: PathPrefix(`/`)
+    middlewares:
+      - name: plex-path-rewrite
+    priority: 0
+    services:
+    - kind: Service
+      name: plex
+      namespace: kinokube
+      port: webui
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: plex-path-rewrite
+spec:
+  redirectRegex:
+    regex: "^/$"
+    replacement: "/manage"

@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sonarr
+data:
+  SONARR__AUTH__ENABLED: "false"
+  SONARR__AUTH__METHOD: "none"
+  SONARR__AUTH__REQUIRED: "DisabledForLocalAddresses"
+  SONARR__SERVER__URLBASE: "/sonarr"

@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: overseerr
+  name: overseerr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: overseerr
+  template:
+    metadata:
+      labels:
+        run: overseerr
+    spec:
+      containers:
+      - env: []
+        image: linuxserver/overseerr
+        name: overseerr
+        ports:
+        - containerPort: 5055
+          name: webui
+        readinessProbe:
+          httpGet:
+            path: "/api/v1/status"
+            port: webui
+          initialDelaySeconds: 30
+          periodSeconds: 10

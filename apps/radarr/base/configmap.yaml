@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: radarr
+data:
+  RADARR__AUTH__ENABLED: "false"
+  RADARR__AUTH__METHOD: "none"
+  RADARR__AUTH__REQUIRED: "DisabledForLocalAddresses"
+  RADARR__SERVER__URLBASE: "/radarr"

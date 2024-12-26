@@ -1,0 +1,17 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: prowlarr
+spec:
+  entryPoints: []
+  routes:
+  - kind: Rule
+    match: PathPrefix(`/prowlarr`)
+    middlewares: []
+    priority: 0
+    services:
+    - kind: Service
+      name: prowlarr
+      namespace: kinokube
+      port: webui

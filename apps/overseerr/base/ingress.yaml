@@ -1,0 +1,17 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: overseerr
+spec:
+  entryPoints: []
+  routes:
+  - kind: Rule
+    match: PathPrefix(`/overseerr`)
+    middlewares: []
+    priority: 0
+    services:
+    - kind: Service
+      name: overseerr
+      namespace: kinokube
+      port: webui

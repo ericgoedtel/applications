@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prowlarr
+data:
+  PROWLARR__AUTH__ENABLED: "false"
+  PROWLARR__AUTH__METHOD: "none"
+  PROWLARR__AUTH__REQUIRED: "DisabledForLocalAddresses"
+  PROWLARR__SERVER__URLBASE: "/prowlarr"

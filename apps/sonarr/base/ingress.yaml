@@ -1,0 +1,17 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: sonarr
+spec:
+  entryPoints: []
+  routes:
+  - kind: Rule
+    match: PathPrefix(`/sonarr`)
+    middlewares: []
+    priority: 0
+    services:
+    - kind: Service
+      name: sonarr
+      namespace: kinokube
+      port: webui

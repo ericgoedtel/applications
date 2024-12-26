@@ -1,0 +1,17 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: radarr
+spec:
+  entryPoints: []
+  routes:
+  - kind: Rule
+    match: PathPrefix(`/radarr`)
+    middlewares: []
+    priority: 0
+    services:
+    - kind: Service
+      name: radarr
+      namespace: kinokube
+      port: webui

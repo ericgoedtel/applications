@@ -1,0 +1,27 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: plex
+  name: plex
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: plex
+  template:
+    metadata:
+      labels:
+        run: plex
+    spec:
+      hostNetwork: true  # Required to get local apps to hit correct interfaces :yuck:
+      containers:
+      - env: []
+        image: linuxserver/plex
+        name: plex
+        ports:
+        - containerPort: 32400
+          name: webui
+          protocol: TCP
+        volumeMounts: []
