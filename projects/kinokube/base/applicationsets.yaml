@@ -31,4 +31,6 @@ spec:
       destination:
         server: "{{server}}"
         namespace: kinokube
-      syncPolicy: {}  # TODO: Leave empty for now
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
