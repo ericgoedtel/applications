@@ -16,19 +16,19 @@ spec:
                 - service: radarr
                 - service: sonarr
                 - service: transmission
-template:
-  metadata:
-    name: "{{service}}-{{cluster}}"
-    labels:
-      app: "{{service}}"
-      project: kinokube
-  spec:
-    project: kinokube  # TODO: Does this need to be created elsewhere?
-    source:
-      repoURL: git@github.com:ericgoedtel/applications
-      targetRevision: HEAD
-      path: "apps/{{service}}"
-    destination:
-      name: "{{cluster}}"
-      namespace: kinokube
-    syncPolicy: {}  # TODO: Leave empty for now
+  template:
+    metadata:
+      name: "{{service}}-{{cluster}}"
+      labels:
+        app: "{{service}}"
+        project: kinokube
+    spec:
+      project: kinokube  # TODO: Does this need to be created elsewhere?
+      source:
+        repoURL: git@github.com:ericgoedtel/applications
+        targetRevision: HEAD
+        path: "apps/{{service}}"
+      destination:
+        name: "{{cluster}}"
+        namespace: kinokube
+      syncPolicy: {}  # TODO: Leave empty for now
