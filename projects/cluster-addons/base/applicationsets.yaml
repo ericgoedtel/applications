@@ -1,0 +1,29 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: cluster-addons
+  namespace: argocd
+spec:
+  generators:
+    - matrix:
+        generators:
+          - list:
+              elements:
+                - service: csi-nfs-driver
+  template:
+    metadata:
+      name: "{{service}}-{{shortName}}"
+      labels:
+        app: "{{service}}"
+        project: cluster-addons
+    spec:
+      project: default  # TODO: Is it worth it to create separate projects?
+      source:
+        repoURL: https://github.com/ericgoedtel/applications
+        targetRevision: HEAD
+        path: "apps/{{service}}/overlays/{{shortName}}"
+      destination:
+        server: "{{server}}"
+        namespace: kube-system
+      syncPolicy: {}

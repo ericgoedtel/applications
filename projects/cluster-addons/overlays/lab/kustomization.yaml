@@ -1,0 +1,19 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../../base
+
+# Target clusters where this app should be deployed
+patches:
+  - target:
+      kind: ApplicationSet
+    patch: |
+      - op: add
+        path: /spec/generators/0/matrix/generators/0
+        value:
+          list:
+            elements:
+              - server: https://kubernetes.default.svc
+                shortName: lab
