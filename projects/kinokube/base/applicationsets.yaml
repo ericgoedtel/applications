@@ -10,7 +10,7 @@ spec:
         generators:
           - list:
               elements:
-                - service: overseerr
+                # - service: overseerr  # TODO: Later
                 - service: plex
                 - service: prowlarr
                 - service: radarr
@@ -18,17 +18,17 @@ spec:
                 - service: transmission
   template:
     metadata:
-      name: "{{service}}-{{cluster}}"
+      name: "{{service}}-{{shortName}}"
       labels:
         app: "{{service}}"
         project: kinokube
     spec:
-      project: kinokube  # TODO: Does this need to be created elsewhere?
+      project: default  # TODO: Is it worth it to create separate projects?
       source:
-        repoURL: git@github.com:ericgoedtel/applications
+        repoURL: https://github.com/ericgoedtel/applications
         targetRevision: HEAD
         path: "apps/{{service}}"
       destination:
-        name: "{{cluster}}"
+        server: "{{server}}"
         namespace: kinokube
       syncPolicy: {}  # TODO: Leave empty for now
