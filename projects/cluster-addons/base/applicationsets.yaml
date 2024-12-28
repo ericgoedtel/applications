@@ -11,6 +11,7 @@ spec:
           - list:
               elements:
                 - service: csi-nfs-driver
+                - service: media-shares
   template:
     metadata:
       name: "{{service}}-{{shortName}}"
