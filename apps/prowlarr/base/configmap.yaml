@@ -8,3 +8,5 @@ data:
   PROWLARR__AUTH__METHOD: "none"
   PROWLARR__AUTH__REQUIRED: "DisabledForLocalAddresses"
   PROWLARR__SERVER__URLBASE: "/prowlarr"
+  PUID: "65534"
+  PGID: "65534"
