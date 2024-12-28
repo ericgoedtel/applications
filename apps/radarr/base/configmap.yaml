@@ -8,3 +8,5 @@ data:
   RADARR__AUTH__METHOD: "none"
   RADARR__AUTH__REQUIRED: "DisabledForLocalAddresses"
   RADARR__SERVER__URLBASE: "/radarr"
+  PUID: "65534"
+  PGID: "65534"
