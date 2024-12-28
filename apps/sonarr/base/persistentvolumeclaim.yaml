@@ -10,3 +10,31 @@ spec:
     requests:
       storage: 1Gi
   storageClassName: nfs-legacy-dynamic
+---
+# This will need to be moved to a static mount for the dedicated disk
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sonarr-downloads
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 210Gi
+  volumeName: nfs-downloads
+  storageClassName: nfs-legacy-dynamic
+---
+# This will need to be moved to a static mount for its dedicated pool
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sonarr-tv
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 15Ti
+  volumeName: nfs-media
+  storageClassName: nfs-legacy-dynamic
