@@ -16,6 +16,7 @@ spec:
                 - service: radarr
                 - service: sonarr
                 - service: transmission
+                - service: media-shares
   template:
     metadata:
       name: "{{service}}-{{shortName}}"

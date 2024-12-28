@@ -46,14 +46,14 @@ spec:
           - mountPath: "/downloads"
             name: downloads
           - mountPath: "/media"
-            name: tv
+            name: media
       volumes:
         - name: config
           persistentVolumeClaim:
             claimName: sonarr-config
         - name: downloads
           persistentVolumeClaim:
-            claimName: sonarr-downloads
-        - name: tv
+            claimName: nfs-downloads
+        - name: media
           persistentVolumeClaim:
-            claimName: sonarr-tv
+            claimName: nfs-media

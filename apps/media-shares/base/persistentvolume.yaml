@@ -9,7 +9,6 @@ spec:
   volumeMode: Filesystem
   accessModes:
     - ReadWriteMany
-  persistentVolumeReclaimPolicy: Retain
   storageClassName: nfs-legacy-dynamic
   mountOptions:
     - vers=4.1
@@ -27,10 +26,10 @@ spec:
   volumeMode: Filesystem
   accessModes:
     - ReadWriteMany
-  persistentVolumeReclaimPolicy: Retain
   storageClassName: nfs-legacy-dynamic
   mountOptions:
     - vers=4.1
   nfs:
     path: /opt/htpc/media
     server: 192.168.86.21
+

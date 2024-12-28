@@ -15,19 +15,34 @@ spec:
       labels:
         run: transmission
     spec:
-      containers:    
-      - name: transmission
-        image: linuxserver/transmission
-        env: []
-        ports:
-        - containerPort: 9091
-          name: webui
-          protocol: TCP
-        - containerPort: 51413
-          name: torrent-tcp
-          protocol: TCP
-        - containerPort: 51413
-          name: torrent-udp
-          protocol: UDP
-        resources: {}
-        volumeMounts:  []
+      containers:
+        - name: transmission
+          image: linuxserver/transmission
+          env:
+            - name: PUID
+              value: "65534"
+            - name: PGID
+              value: "65534"
+          ports:
+            - containerPort: 9091
+              name: webui
+              protocol: TCP
+            - containerPort: 51413
+              name: torrent-tcp
+              protocol: TCP
+            - containerPort: 51413
+              name: torrent-udp
+              protocol: UDP
+          resources: {}
+          volumeMounts:
+            - mountPath: "/config"
+              name: config
+            - mountPath: "/downloads"
+              name: downloads
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: transmission-config
+        - name: downloads
+          persistentVolumeClaim:
+            claimName: nfs-downloads
