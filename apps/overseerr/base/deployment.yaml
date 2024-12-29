@@ -27,4 +27,5 @@ spec:
             path: "/api/v1/status"
             port: webui
           initialDelaySeconds: 30
-          periodSeconds: 10
+          periodSeconds: 60
+          timeoutSeconds: 10
