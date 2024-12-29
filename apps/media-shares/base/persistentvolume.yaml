@@ -5,16 +5,18 @@ metadata:
   name: nfs-downloads
 spec:
   capacity:
-    storage: 210Gi  # Approximately 225 GB
+    storage: 210Gi # Approximately 225 GB
   volumeMode: Filesystem
   accessModes:
     - ReadWriteMany
   storageClassName: nfs-legacy-dynamic
-  mountOptions:
-    - vers=4.1
   nfs:
     path: /opt/htpc/downloads
     server: 192.168.86.21
+  mountOptions:
+    - nfsvers=4.1
+    - async
+    - noatime
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -22,14 +24,15 @@ metadata:
   name: nfs-media
 spec:
   capacity:
-    storage: 15Ti  # Approximately 16.1 terabytes
+    storage: 15Ti # Approximately 16.1 terabytes
   volumeMode: Filesystem
   accessModes:
     - ReadWriteMany
   storageClassName: nfs-legacy-dynamic
-  mountOptions:
-    - vers=4.1
   nfs:
     path: /opt/htpc/media
     server: 192.168.86.21
-
+  mountOptions:
+    - nfsvers=4.1
+    - async
+    - noatime

@@ -11,3 +11,5 @@ reclaimPolicy: Retain
 allowVolumeExpansion: true
 mountOptions:
   - nfsvers=4.1
+  - async
+  - noatime
