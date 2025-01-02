@@ -17,7 +17,11 @@ spec:
     spec:
       hostNetwork: true  # Required to get local apps to hit correct interfaces :yuck:
       containers:
-      - env: []
+      - env:
+        - name: UID
+          value: "65534"
+        - name: GID
+          value: "65534"
         image: linuxserver/plex
         name: plex
         ports:
