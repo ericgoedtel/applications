@@ -18,9 +18,9 @@ spec:
       hostNetwork: true  # Required to get local apps to hit correct interfaces :yuck:
       containers:
       - env:
-        - name: UID
+        - name: PUID
           value: "65534"
-        - name: GID
+        - name: PGID
           value: "65534"
         image: linuxserver/plex
         name: plex
@@ -28,4 +28,15 @@ spec:
         - containerPort: 32400
           name: webui
           protocol: TCP
-        volumeMounts: []
+        volumeMounts:
+          - mountPath: "/data"
+            name: media
+          - mountPath: "/config"
+            name: config
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: plex-config
+        - name: media
+          persistentVolumeClaim:
+            claimName: nfs-media
