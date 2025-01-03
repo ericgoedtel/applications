@@ -1,0 +1,44 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: adguard
+  name: adguard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: adguard
+  template:
+    metadata:
+      labels:
+        run: adguard
+    spec:
+      # hostNetwork: true # Required to resolve requestor ips (yuck)
+      containers:
+        - env: []
+          image: adguard/adguardhome
+          name: adguard
+          ports:
+            # - containerPort: 53
+            #   protocol: TCP
+            #   name: dns-tcp
+            - containerPort: 53
+              protocol: UDP
+              name: dns-udp
+            - containerPort: 3000
+              protocol: TCP
+              name: admin
+          volumeMounts:
+            - name: config
+              mountPath: /opt/adguardhome/conf/
+            - name: work
+              mountPath: /opt/adguardhome/work
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: adguard-config
+        - name: work
+          persistentVolumeClaim:
+            claimName: adguard-work

@@ -1,0 +1,42 @@
+# ---
+# apiVersion: traefik.containo.us/v1alpha1
+# kind: IngressRouteUDP
+# metadata:
+#   name: dns
+# spec:
+#   entryPoints:
+#     - dns
+#   routes:
+#     - services:
+#         - name: dns-udp
+#           port: dns-udp
+# ---
+# apiVersion: traefik.containo.us/v1alpha1
+# kind: IngressRouteTCP
+# metadata:
+#   name: dns
+# spec:
+#   entryPoints:
+#     - dns
+#   routes:
+#     - services:
+#         - name: dns-tcp
+#           port: dns-tcp
+---
+# Normal path rewrite
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: admin
+spec:
+  entryPoints: []
+  routes:
+    - kind: Rule
+      match: PathPrefix(`/adguard`)
+      priority: 0
+      services:
+        - kind: Service
+          name: admin
+          namespace: adguard
+          port: admin
+

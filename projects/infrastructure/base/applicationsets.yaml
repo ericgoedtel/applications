@@ -1,0 +1,32 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: infrastructure
+  namespace: argocd
+spec:
+  generators:
+    - matrix:
+        generators:
+          - list:
+              elements:
+                - service: adguard
+                  namespace: adguard
+  template:
+    metadata:
+      name: "{{service}}-{{shortName}}"
+      labels:
+        app: "{{service}}"
+        project: infrastructure
+    spec:
+      project: default  # TODO: Is it worth it to create separate projects?
+      source:
+        repoURL: https://github.com/ericgoedtel/applications
+        targetRevision: HEAD
+        path: "apps/{{service}}/overlays/{{shortName}}"
+      destination:
+        server: "{{server}}"
+        namespace: "{{namespace}}"
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
