@@ -1,0 +1,23 @@
+---
+version: "3"
+tasks:
+  helm-template:
+    cmds:
+      - >
+        helm template
+        --version "1.17.0"
+        --values {{.ROOT_DIR}}/values.yaml
+        --namespace 1password
+        --skip-tests
+        --include-crds
+        1password/connect
+        > "{{.ROOT_DIR}}/base/resources.yaml"
+    sources:
+      - "{{.ROOT_DIR}}/values.yaml"
+    generates:
+      - "{{.ROOT_DIR}}/base/resources.yaml"
+  kustomize-build:
+    deps:
+      - helm-template
+    cmds:
+      - kustomize build overlays/default

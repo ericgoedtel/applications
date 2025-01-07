@@ -12,6 +12,8 @@ spec:
               elements:
                 - service: adguard
                   namespace: adguard
+                - service: 1password
+                  namespace: 1password
   template:
     metadata:
       name: "{{service}}-{{shortName}}"
@@ -19,7 +21,7 @@ spec:
         app: "{{service}}"
         project: infrastructure
     spec:
-      project: default  # TODO: Is it worth it to create separate projects?
+      project: default # TODO: Is it worth it to create separate projects?
       source:
         repoURL: https://github.com/ericgoedtel/applications
         targetRevision: HEAD
@@ -30,3 +32,14 @@ spec:
       syncPolicy:
         syncOptions:
           - CreateNamespace=true
+          - RespectIgnoreDifferences=true
+          - ApplyOutOfSyncOnly=true
+      ignoreDifferences:
+        - kind: Secret
+          name: op-credentials
+          jsonPointers:
+            - /data/1password-credentials.json
+        - kind: Secret
+          name: onepassword-token
+          jsonPointers:
+            - /data/token

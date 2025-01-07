@@ -1,0 +1,107 @@
+commonLabels: {}
+
+# This section of values is for 1Password Connect API and Sync Configuration
+connect:
+  create: true
+  replicas: 1
+  api:
+    name: connect-api
+    imageRepository: 1password/connect-api
+    resources:
+      limits:
+        memory: 128Mi
+      requests:
+        cpu: 0.2
+    httpPort: 8080
+    httpsPort: 8443
+    logLevel: info
+    serviceMonitor:
+      enabled: false
+
+  # The 1Password Connect Sync Specific Values
+  sync:
+    name: connect-sync
+    imageRepository: 1password/connect-sync
+    resources: {}
+    httpPort: 8081
+    logLevel: info
+
+  # The name of 1Password Connect Application
+  applicationName: onepassword-connect
+
+  # The name of 1Password Connect Host
+  host: onepassword-connect
+
+  serviceType: NodePort
+  serviceAnnotations: {}
+
+  # The name of Kubernetes Secret containing the 1Password Connect credentials
+  credentialsName: op-credentials
+  credentialsKey: 1password-credentials.json
+  credentials: "fake" # Force it to generate a blank secret
+
+  version: "1.7.3"
+  hpa:
+    enabled: false
+
+  pdb:
+    enabled: false
+
+  probes:
+    liveness: true
+    readiness: true
+
+  # 1Password Connect volume shared between 1Password Connect Containers
+  dataVolume:
+    name: shared-data
+    type: emptyDir
+    values: {}
+
+  tls:
+    enabled: false
+
+  ingress: # TODO: Probably can do this on our own
+    enabled: false
+
+  profiler:
+    enabled: false
+
+  customEnvVars: []
+
+# This section of values is for 1Password Operator Configuration
+operator:
+  create: true
+  replicas: 1
+  autoRestart: false
+  applicationName: onepassword-connect-operator
+  imageRepository: 1password/onepassword-operator
+  version: "1.8.1"
+  hpa:
+    enabled: false
+  pdb:
+    enabled: false
+  token:
+    name: onepassword-token
+    key: token
+    value: "fake" # Force it to create an empty secret
+
+  serviceAccount:
+    create: true
+    name: onepassword-connect-operator
+
+  roleBinding:
+    create: true
+    name: onepassword-connect-operator
+
+  clusterRole:
+    create: true
+    name: onepassword-connect-operator
+
+  clusterRoleBinding:
+    create: true
+    name: onepassword-connect-operator
+  logLevel: info
+  customEnvVars: []
+
+acceptanceTests:
+  enabled: false
