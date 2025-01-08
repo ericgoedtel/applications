@@ -1,0 +1,23 @@
+---
+version: "3"
+tasks:
+  helm-template:
+    cmds:
+      - >
+        helm template
+        --version "1.15.0"
+        --values {{.ROOT_DIR}}/values.yaml
+        --namespace external-dns
+        --skip-tests
+        --include-crds
+        external-dns/external-dns
+        > "{{.ROOT_DIR}}/base/resources.yaml"
+    sources:
+      - "{{.ROOT_DIR}}/values.yaml"
+    generates:
+      - "{{.ROOT_DIR}}/base/resources.yaml"
+  kustomize-build:
+    deps:
+      - helm-template
+    cmds:
+      - kustomize build overlays/default

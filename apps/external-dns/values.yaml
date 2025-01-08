@@ -1,0 +1,14 @@
+---
+provider:
+  name: cloudflare
+env:
+  - name: CF_API_KEY
+    valueFrom:
+      secretKeyRef:
+        name: cloudflare-api-key
+        key: password
+  - name: CF_API_EMAIL
+    valueFrom:
+      secretKeyRef:
+        name: cloudflare-api-key
+        key: username
