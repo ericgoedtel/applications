@@ -245,7 +245,7 @@ spec:
                   name: cloudflare-api-key
           args:
             - --log-level=info
-            - --log-format=json-pretty
+            - --log-format=json
             - --interval=1m
             - --source=service
             - --source=ingress

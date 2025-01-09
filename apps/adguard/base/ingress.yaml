@@ -28,15 +28,16 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: admin
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: blackhole.amolicob.cloud
 spec:
   entryPoints: []
   routes:
     - kind: Rule
-      match: PathPrefix(`/adguard`)
+      match: Host(`blackhole.amolicob.cloud`)
       priority: 0
       services:
         - kind: Service
           name: admin
           namespace: adguard
           port: admin
-
