@@ -108,12 +108,12 @@ spec:
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: release-name-external-dns
+  name: cloudflare-external-dns
   namespace: external-dns
   labels:
     helm.sh/chart: external-dns-1.15.0
     app.kubernetes.io/name: external-dns
-    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/instance: cloudflare
     app.kubernetes.io/version: "0.15.0"
     app.kubernetes.io/managed-by: Helm
 automountServiceAccountToken:
@@ -122,11 +122,11 @@ automountServiceAccountToken:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: release-name-external-dns
+  name: cloudflare-external-dns
   labels:
     helm.sh/chart: external-dns-1.15.0
     app.kubernetes.io/name: external-dns
-    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/instance: cloudflare
     app.kubernetes.io/version: "0.15.0"
     app.kubernetes.io/managed-by: Helm
 rules:
@@ -147,39 +147,39 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: release-name-external-dns-viewer
+  name: cloudflare-external-dns-viewer
   labels:
     helm.sh/chart: external-dns-1.15.0
     app.kubernetes.io/name: external-dns
-    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/instance: cloudflare
     app.kubernetes.io/version: "0.15.0"
     app.kubernetes.io/managed-by: Helm
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: release-name-external-dns
+  name: cloudflare-external-dns
 subjects:
   - kind: ServiceAccount
-    name: release-name-external-dns
+    name: cloudflare-external-dns
     namespace: external-dns
 ---
 # Source: external-dns/templates/service.yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: release-name-external-dns
+  name: cloudflare-external-dns
   namespace: external-dns
   labels:
     helm.sh/chart: external-dns-1.15.0
     app.kubernetes.io/name: external-dns
-    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/instance: cloudflare
     app.kubernetes.io/version: "0.15.0"
     app.kubernetes.io/managed-by: Helm
 spec:
   type: ClusterIP
   selector:
     app.kubernetes.io/name: external-dns
-    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/instance: cloudflare
   ports:
     - name: http
       port: 7979
@@ -190,12 +190,12 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: release-name-external-dns
+  name: cloudflare-external-dns
   namespace: external-dns
   labels:
     helm.sh/chart: external-dns-1.15.0
     app.kubernetes.io/name: external-dns
-    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/instance: cloudflare
     app.kubernetes.io/version: "0.15.0"
     app.kubernetes.io/managed-by: Helm
 spec:
@@ -203,16 +203,16 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: external-dns
-      app.kubernetes.io/instance: release-name
+      app.kubernetes.io/instance: cloudflare
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
         app.kubernetes.io/name: external-dns
-        app.kubernetes.io/instance: release-name
+        app.kubernetes.io/instance: cloudflare
     spec:
-      serviceAccountName: release-name-external-dns
+      serviceAccountName: cloudflare-external-dns
       securityContext:
         fsGroup: 65534
         runAsNonRoot: true
@@ -245,7 +245,7 @@ spec:
                   name: cloudflare-api-key
           args:
             - --log-level=info
-            - --log-format=text
+            - --log-format=json-pretty
             - --interval=1m
             - --source=service
             - --source=ingress

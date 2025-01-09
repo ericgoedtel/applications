@@ -1,6 +1,7 @@
 ---
 provider:
   name: cloudflare
+logFormat: json-pretty
 env:
   - name: CF_API_KEY
     valueFrom:

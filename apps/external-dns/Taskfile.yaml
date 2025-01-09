@@ -10,6 +10,7 @@ tasks:
         --namespace external-dns
         --skip-tests
         --include-crds
+        --release-name cloudflare
         external-dns/external-dns
         > "{{.ROOT_DIR}}/base/resources.yaml"
     sources:
