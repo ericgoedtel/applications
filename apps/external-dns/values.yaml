@@ -2,6 +2,11 @@
 provider:
   name: cloudflare
 logFormat: json
+interval: 5m
+sources:
+  - service
+  - ingress
+  - traefik-proxy
 env:
   - name: CF_API_KEY
     valueFrom:

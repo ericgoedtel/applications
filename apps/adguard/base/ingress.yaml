@@ -29,7 +29,7 @@ kind: IngressRoute
 metadata:
   name: admin
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: blackhole.amolicob.cloud
+    external-dns.alpha.kubernetes.io/target: amolicob.cloud
 spec:
   entryPoints: []
   routes:

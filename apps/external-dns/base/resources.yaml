@@ -142,6 +142,9 @@ rules:
   - apiGroups: ["extensions","networking.k8s.io"]
     resources: ["ingresses"]
     verbs: ["get","watch","list"]
+  - apiGroups: ["traefik.containo.us", "traefik.io"]
+    resources: ["ingressroutes", "ingressroutetcps", "ingressrouteudps"]
+    verbs: ["get","watch","list"]
 ---
 # Source: external-dns/templates/clusterrolebinding.yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -246,9 +249,10 @@ spec:
           args:
             - --log-level=info
             - --log-format=json
-            - --interval=1m
+            - --interval=5m
             - --source=service
             - --source=ingress
+            - --source=traefik-proxy
             - --policy=upsert-only
             - --registry=txt
             - --provider=cloudflare
