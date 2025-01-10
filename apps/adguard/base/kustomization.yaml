@@ -8,5 +8,4 @@ resources:
   - deployment.yaml
   - ingress.yaml
   - persistentvolumeclaim.yaml
-  - secret.yaml
   - service.yaml
