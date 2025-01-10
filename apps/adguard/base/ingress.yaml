@@ -1,15 +1,15 @@
-# ---
-# apiVersion: traefik.containo.us/v1alpha1
-# kind: IngressRouteUDP
-# metadata:
-#   name: dns
-# spec:
-#   entryPoints:
-#     - dns
-#   routes:
-#     - services:
-#         - name: dns-udp
-#           port: dns-udp
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRouteUDP
+metadata:
+  name: dns
+spec:
+  entryPoints:
+    - dns
+  routes:
+    - services:
+        - name: dns-udp
+          port: dns-udp
 # ---
 # apiVersion: traefik.containo.us/v1alpha1
 # kind: IngressRouteTCP

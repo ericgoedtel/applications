@@ -8,10 +8,10 @@ metadata:
 spec:
   valuesContent: |-
     additionalArguments:
-      - "--entrypoints.dns.address=:5353/udp"
+      - "--entrypoints.dns.address=:53/udp"
     ports:
       dns:
-        port: 5353
+        port: 53
         expose:
           default: true
         protocol: UDP
