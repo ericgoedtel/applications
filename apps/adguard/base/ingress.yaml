@@ -31,7 +31,8 @@ metadata:
   annotations:
     external-dns.alpha.kubernetes.io/target: amolicob.cloud
 spec:
-  entryPoints: []
+  entryPoints:
+    - websecure
   routes:
     - kind: Rule
       match: Host(`blackhole.amolicob.cloud`)
