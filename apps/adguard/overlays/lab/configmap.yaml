@@ -1,5 +1,6 @@
 ---
 # Forwards to the current cluster IP of adguard. May break if the service is reconstituted
+# CoreDNS must be rolled after application
 apiVersion: v1
 kind: ConfigMap
 metadata:

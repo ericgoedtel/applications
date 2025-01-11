@@ -4,7 +4,17 @@ kind: Kustomization
 
 resources:
   - ../../base/
+  - configmap.yaml # Cluster-specific override for coredns
 
 images:
   - name: adguard/adguardhome
     digest: "sha256:633154b8e53689a5de756b5a1dc6afda03855ff4c84086c636a6cd67140523f8"
+
+patches:
+  - target:
+      kind: "ConfigMap"
+      name: "coredns-custom"
+    patch: |
+      - op: replace
+        path: /metadata/namespace
+        value: kube-system
