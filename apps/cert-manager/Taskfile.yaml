@@ -1,0 +1,22 @@
+---
+version: "3"
+tasks:
+  helm-template:
+    cmds:
+      - >
+        helm template
+        cert-manager jetstack/cert-manager
+        --values {{.ROOT_DIR}}/values.yaml
+        --namespace cert-manager
+        --version v1.16.2
+        --set crds.enabled=true 
+        > "{{.ROOT_DIR}}/base/resources.yaml"
+    sources:
+      - "{{.ROOT_DIR}}/values.yaml"
+    generates:
+      - "{{.ROOT_DIR}}/base/resources.yaml"
+  kustomize-build:
+    deps:
+      - helm-template
+    cmds:
+      - kustomize build overlays/default

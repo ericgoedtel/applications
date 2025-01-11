@@ -41,3 +41,5 @@ spec:
           name: admin
           namespace: adguard
           port: admin
+  tls:
+    secretName: adguard-admin

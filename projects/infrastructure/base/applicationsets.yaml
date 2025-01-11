@@ -16,6 +16,8 @@ spec:
                   namespace: 1password
                 - service: external-dns
                   namespace: external-dns
+                - service: cert-manager
+                  namespace: cert-manager
   template:
     metadata:
       name: "{{service}}-{{shortName}}"
