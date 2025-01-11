@@ -20,8 +20,11 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: htpc
+  annotations:
+    external-dns.alpha.kubernetes.io/target: amolicob.cloud
 spec:
-  entryPoints: []
+  entryPoints:
+    - websecure
   routes:
     - kind: Rule
       match: Host(`watch.amolicob.cloud`)
@@ -33,6 +36,8 @@ spec:
           name: plex
           namespace: kinokube
           port: webui
+  tls:
+    secretName: plex-webui
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
