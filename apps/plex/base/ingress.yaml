@@ -23,16 +23,16 @@ metadata:
 spec:
   entryPoints: []
   routes:
-  - kind: Rule
-    match: PathPrefix(`/`)
-    middlewares:
-      - name: plex-path-rewrite
-    priority: 0
-    services:
-    - kind: Service
-      name: plex
-      namespace: kinokube
-      port: webui
+    - kind: Rule
+      match: Host(`watch.amolicob.cloud`)
+      middlewares:
+        - name: plex-path-rewrite
+      priority: 0
+      services:
+        - kind: Service
+          name: plex
+          namespace: kinokube
+          port: webui
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
