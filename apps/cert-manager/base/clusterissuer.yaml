@@ -6,7 +6,7 @@ metadata:
 spec:
   acme:
     email: ericgoedtel@gmail.com
-    server: https://acme-staging-v02.api.letsencrypt.org/directory # Use staging for testing
+    server: https://acme-v02.api.letsencrypt.org/directory # Use staging for testing
     privateKeySecretRef:
       name: letsencrypt-cloudflare-private-key
     solvers:
