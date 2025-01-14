@@ -3,4 +3,34 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - applicationsets.yaml
+  - ../../base/
+
+# Patches specific to all infrastructure apps
+patches:
+  - target:
+      kind: ApplicationSet
+    patch: |
+      - op: replace
+        path: /metadata/name
+        value: infrastructure
+  - target:
+      kind: ApplicationSet
+    patch: | # Sync issues with manually filled secrets
+      - op: add
+        path: /spec/template/spec/syncPolicy
+        value:
+          syncOptions:
+            - CreateNamespace=true
+            - RespectIgnoreDifferences=true
+            - ApplyOutOfSyncOnly=true
+      - op: add
+        path: /spec/template/spec/ignoreDifferences
+        value:
+          - kind: Secret
+            name: op-credentials
+            jsonPointers:
+              - /data/1password-credentials.json
+          - kind: Secret
+            name: onepassword-token
+            jsonPointers:
+              - /data/token

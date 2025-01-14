@@ -17,3 +17,14 @@ patches:
             elements:
               - server: https://kubernetes.default.svc
                 shortName: lab
+      - op: add
+        path: /spec/generators/0/matrix/generators/0
+        value:
+          list:
+            elements:
+                - service: plex
+                - service: prowlarr
+                - service: radarr
+                - service: sonarr
+                - service: transmission
+                - service: media-shares

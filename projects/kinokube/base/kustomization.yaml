@@ -3,4 +3,16 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - applicationsets.yaml
+  - ../../base/
+
+# Patches specific to all kinokube apps
+patches:
+  - target:
+      kind: ApplicationSet
+    patch: |
+      - op: replace
+        path: /metadata/name
+        value: kinokube
+      - op: replace
+        path: /spec/template/spec/destination/namespace
+        value: "kinokube"

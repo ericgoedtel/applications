@@ -5,7 +5,6 @@ kind: Kustomization
 resources:
   - ../../base
 
-# Target clusters where this app should be deployed
 patches:
   - target:
       kind: ApplicationSet
@@ -17,3 +16,12 @@ patches:
             elements:
               - server: https://kubernetes.default.svc
                 shortName: lab
+      - op: add
+        path: /spec/generators/0/matrix/generators/0
+        value:
+          list:
+            elements:
+                - service: adguard
+                - service: 1password
+                - service: external-dns
+                - service: cert-manager
