@@ -1,0 +1,33 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../../base/
+
+patches:
+  - target:
+      kind: HelmChartConfig
+      name: traefik
+    patch: |
+      - op: replace
+        path: /spec/valuesContent
+        value: |-
+          additionalArguments:
+            - "--entrypoints.dns.address=:53/udp"
+          ports:
+            dns:
+              port: 53
+              expose:
+                default: true
+              protocol: UDP
+          service:
+            annotations:
+              external-dns.alpha.kubernetes.io/hostname: lab.amolicob.cloud
+  - target:
+      kind: Certificate
+      name: traefik-default
+    patch: |
+      - op: replace
+        path: /spec/dnsNames/0
+        value: "lab.amolicob.cloud"
