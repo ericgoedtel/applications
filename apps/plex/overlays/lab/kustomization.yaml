@@ -4,3 +4,15 @@ kind: Kustomization
 
 resources:
   - ../../base/
+
+patches:
+  - target:
+      kind: IngressRoute
+      name: htpc
+    patch: |
+      - op: replace
+        path: /spec/routes/0/match
+        value: Host(`watch.lab.amolicob.cloud`)
+      - op: replace
+        path: /metadata/annotations/external-dns.alpha.kubernetes.io~1target
+        value: lab.amolicob.cloud
