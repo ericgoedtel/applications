@@ -28,3 +28,9 @@ patches:
       - op: replace
         path: /metadata/annotations/external-dns.alpha.kubernetes.io~1target
         value: lab.amolicob.cloud
+  - target:
+      kind: Deployment
+    patch: |
+      - op: add
+        path: /spec/revisionHistoryLimit
+        value: 2
