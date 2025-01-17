@@ -10,29 +10,31 @@ spec:
   selector:
     matchLabels:
       run: plex
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
         run: plex
     spec:
-      hostNetwork: true  # Required to get local apps to hit correct interfaces :yuck:
+      hostNetwork: true # Required to get local apps to hit correct interfaces :yuck:
       containers:
-      - env:
-        - name: PUID
-          value: "65534"
-        - name: PGID
-          value: "65534"
-        image: linuxserver/plex
-        name: plex
-        ports:
-        - containerPort: 32400
-          name: webui
-          protocol: TCP
-        volumeMounts:
-          - mountPath: "/data"
-            name: media
-          - mountPath: "/config"
-            name: config
+        - env:
+            - name: PUID
+              value: "65534"
+            - name: PGID
+              value: "65534"
+          image: linuxserver/plex
+          name: plex
+          ports:
+            - containerPort: 32400
+              name: webui
+              protocol: TCP
+          volumeMounts:
+            - mountPath: "/data"
+              name: media
+            - mountPath: "/config"
+              name: config
       volumes:
         - name: config
           hostPath:
