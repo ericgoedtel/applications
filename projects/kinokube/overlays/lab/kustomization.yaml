@@ -11,6 +11,12 @@ patches:
       kind: ApplicationSet
     patch: |
       - op: add
+        path: /spec/template/spec/syncPolicy/automated
+        value: {}
+  - target:
+      kind: ApplicationSet
+    patch: |
+      - op: add
         path: /spec/generators/0/matrix/generators/0
         value:
           list:
