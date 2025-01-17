@@ -25,3 +25,4 @@ patches:
                 - service: 1password
                 - service: external-dns
                 - service: cert-manager
+                - service: traefik
