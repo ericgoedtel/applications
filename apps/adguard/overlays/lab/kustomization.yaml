@@ -34,3 +34,9 @@ patches:
       - op: add
         path: /spec/revisionHistoryLimit
         value: 2
+  - target:
+      kind: Certificate
+    patch: |
+      - op: replace
+        path: /spec/dnsNames/0
+        value: blackhole.lab.amolicob.cloud
