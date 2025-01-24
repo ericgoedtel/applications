@@ -1,5 +1,4 @@
 ---
-# This doesn't actually do anything I am just documenting changes
 apiVersion: helm.cattle.io/v1
 kind: HelmChartConfig
 metadata:
@@ -10,7 +9,7 @@ spec:
     additionalArguments:
       - "--entrypoints.dns.address=:53/udp"
       - "--entrypoints.web.address=:8000"
-      - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
+      - "--entrypoints.web.http.redirections.entryPoint.to=:443"
       - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
       - "--entrypoints.web.http.redirections.entryPoint.permanent=true"
     ports:
