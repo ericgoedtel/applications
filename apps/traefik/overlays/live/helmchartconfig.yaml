@@ -3,21 +3,20 @@ apiVersion: helm.cattle.io/v1
 kind: HelmChartConfig
 metadata:
   name: traefik
-  namespace: kube-system
 spec:
   valuesContent: |-
-    additionalArguments:
-      - "--entrypoints.dns.address=:53/udp"
-      - "--entrypoints.web.address=:8000"
-      - "--entrypoints.web.http.redirections.entryPoint.to=:443"
-      - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
-      - "--entrypoints.web.http.redirections.entryPoint.permanent=true"
     ports:
       dns:
         port: 53
         expose:
           default: true
         protocol: UDP
+      web:
+        redirectTo:
+          port: websecure
+      websecure:
+        middlewares:
+          - kube-system-security-headers@kubernetescrd
     service:
       annotations:
         external-dns.alpha.kubernetes.io/hostname: amolicob.cloud

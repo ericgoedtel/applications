@@ -1,0 +1,12 @@
+---
+# This is for globally applicable middlewares
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: security-headers
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1" # Try to run this before everything else
+spec:
+  headers:
+    stsSeconds: 604800 # 1 week
+    stsIncludeSubdomains: true
