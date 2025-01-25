@@ -36,10 +36,9 @@ spec:
             - mountPath: "/config"
               name: config
       volumes:
-        - name: config
-          hostPath:
-            path: /opt/plex
-            type: DirectoryOrCreate
         - name: media
           persistentVolumeClaim:
             claimName: nfs-media
+        - name: config
+          persistentVolumeClaim:
+            claimName: plex-config
