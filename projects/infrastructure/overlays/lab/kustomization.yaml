@@ -12,9 +12,6 @@ patches:
       - op: add
         path: /spec/template/spec/syncPolicy/automated
         value: {}
-  - target:
-      kind: ApplicationSet
-    patch: |
       - op: add
         path: /spec/generators/0/matrix/generators/0
         value:
@@ -32,3 +29,6 @@ patches:
                 - service: external-dns
                 - service: cert-manager
                 - service: traefik
+      - op: replace
+        path: /spec/template/spec/source/targetRevision
+        value: develop

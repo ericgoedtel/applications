@@ -17,7 +17,7 @@ spec:
       project: default
       source:
         repoURL: https://github.com/ericgoedtel/applications
-        targetRevision: HEAD
+        targetRevision: main
         path: "apps/{{service}}/overlays/{{shortName}}"
       destination:
         server: "{{server}}"
