@@ -10,9 +10,8 @@ patches:
   - target:
       kind: ApplicationSet
     patch: |
-      - op: add
+      - op: remove
         path: /spec/template/spec/syncPolicy/automated
-        value: {}
       - op: add
         path: /spec/generators/0/matrix/generators/0
         value:

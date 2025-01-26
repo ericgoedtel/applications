@@ -23,5 +23,6 @@ spec:
         server: "{{server}}"
         namespace: "{{service}}"
       syncPolicy:
+        automated: {}
         syncOptions:
           - CreateNamespace=true

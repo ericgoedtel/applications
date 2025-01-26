@@ -17,12 +17,11 @@ patches:
       kind: ApplicationSet
     patch: | # Sync issues with manually filled secrets
       - op: add
-        path: /spec/template/spec/syncPolicy
+        path: /spec/template/spec/syncPolicy/syncOptions
         value:
-          syncOptions:
-            - CreateNamespace=true
-            - RespectIgnoreDifferences=true
-            - ApplyOutOfSyncOnly=true
+          - CreateNamespace=true
+          - RespectIgnoreDifferences=true
+          - ApplyOutOfSyncOnly=true
       - op: add
         path: /spec/template/spec/ignoreDifferences
         value:
