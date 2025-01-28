@@ -15,15 +15,12 @@ spec:
       labels:
         run: adguard
     spec:
-      # hostNetwork: true # Required to resolve requestor ips (yuck)
+      hostNetwork: true
       containers:
         - env: []
           image: adguard/adguardhome
           name: adguard
           ports:
-            # - containerPort: 53
-            #   protocol: TCP
-            #   name: dns-tcp
             - containerPort: 53
               protocol: UDP
               name: dns-udp

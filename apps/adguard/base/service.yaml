@@ -2,32 +2,6 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: dns-udp
-spec:
-  ports:
-    - port: 53
-      protocol: UDP
-      targetPort: dns-udp
-      name: dns-udp
-  selector:
-    run: adguard
-# ---
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: dns-tcp
-# spec:
-#   ports:
-#     - port: 32400
-#       protocol: TCP
-#       targetPort: 32400
-#       name: webui
-#   selector:
-#     run: adguard
----
-apiVersion: v1
-kind: Service
-metadata:
   name: admin
 spec:
   ports:
