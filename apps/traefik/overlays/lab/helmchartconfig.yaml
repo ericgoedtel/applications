@@ -6,11 +6,6 @@ metadata:
 spec:
   valuesContent: |-
     ports:
-      dns:
-        port: 53
-        expose:
-          default: true
-        protocol: UDP
       web:
         redirectTo:
           port: websecure
