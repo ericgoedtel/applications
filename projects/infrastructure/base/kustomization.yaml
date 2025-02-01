@@ -33,3 +33,14 @@ patches:
             name: onepassword-token
             jsonPointers:
               - /data/token
+      - op: add
+        path: /spec/generators/0/matrix/generators/0
+        value:
+          list:
+            elements:
+                - service: adguard
+                - service: 1password
+                - service: external-dns
+                - service: cert-manager
+                - service: traefik
+                - service: postgres-operator

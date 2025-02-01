@@ -15,3 +15,9 @@ patches:
       - op: replace
         path: /spec/template/spec/destination/namespace
         value: "kube-system"
+      - op: add
+        path: /spec/generators/0/matrix/generators/0
+        value:
+          list:
+            elements:
+              - service: csi-nfs-driver

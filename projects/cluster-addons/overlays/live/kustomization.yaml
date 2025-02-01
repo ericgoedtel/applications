@@ -17,9 +17,3 @@ patches:
             elements:
               - server: https://kubernetes.default.svc
                 shortName: live
-      - op: add
-        path: /spec/generators/0/matrix/generators/0
-        value:
-          list:
-            elements:
-              - service: csi-nfs-driver
