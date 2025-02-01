@@ -19,12 +19,6 @@ patches:
             elements:
               - server: https://kubernetes.default.svc
                 shortName: lab
-      - op: add
-        path: /spec/generators/0/matrix/generators/0
-        value:
-          list:
-            elements:
-              - service: csi-nfs-driver
       - op: replace
         path: /spec/template/spec/source/targetRevision
         value: develop
