@@ -4,3 +4,14 @@ kind: Kustomization
 
 resources:
   - ../../base
+
+patches:
+  - target:
+      kind: Deployment
+      name: onepassword-connect
+    patch: |
+      - op: add
+        path: /metadata/annotations
+        value:
+          operator.1password.io/item-path: "vaults/yvrcwko6lrmmloktdqczczje2y/items/eja2j2asajajpicinxxjgzrtau"
+          operator.1password.io/item-name: "onepassword-connect"
