@@ -12,3 +12,12 @@ patches:
       - op: add
         path: /spec/revisionHistoryLimit
         value: 2
+  - target:
+      kind: Deployment
+      name: onepassword-connect
+    patch: |
+      - op: add
+        path: /metadata/annotations
+        value:
+          operator.1password.io/item-path: "vaults/yvrcwko6lrmmloktdqczczje2y/items/uzgl2kjkxrpcwiepjlsks66sse"
+          operator.1password.io/item-name: "onepassword-connect"

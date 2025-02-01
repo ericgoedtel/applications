@@ -36,9 +36,8 @@ connect:
   serviceAnnotations: {}
 
   # The name of Kubernetes Secret containing the 1Password Connect credentials
-  credentialsName: op-credentials
-  credentialsKey: 1password-credentials.json
-  credentials: "fake" # Force it to generate a blank secret
+  credentialsName: onepassword-connect
+  credentialsKey: b64-json
 
   version: "1.7.3"
   hpa:
@@ -81,9 +80,8 @@ operator:
   pdb:
     enabled: false
   token:
-    name: onepassword-token
+    name: onepassword-connect
     key: token
-    value: "fake" # Force it to create an empty secret
 
   serviceAccount:
     create: true
