@@ -14,40 +14,41 @@ spec:
     metadata:
       labels:
         run: sonarr
-    spec:   
+    spec:
       containers:
-      - envFrom:
-        - configMapRef:
-            name: sonarr
-        image: linuxserver/sonarr
-        name: sonarr
-        ports:
-        - containerPort: 8989
-          name: webui
-        livenessProbe:
-          exec:
-            command:
-            - /bin/sh
-            - -c
-            - curl "http://localhost:8989/sonarr/api/v3/health?ApiKey=$(sed -ne '/ApiKey/{s/.*<ApiKey>\(.*\)<\/ApiKey>.*/\1/p;q;}' </config/config.xml)"
-          initialDelaySeconds: 30
-          periodSeconds: 60
-        readinessProbe:
-          exec:
-            command:
-            - /bin/sh
-            - -c
-            - curl "http://localhost:8989/sonarr/api/v3/system/status?ApiKey=$(sed -ne '/ApiKey/{s/.*<ApiKey>\(.*\)<\/ApiKey>.*/\1/p;q;}' </config/config.xml)"
-          initialDelaySeconds: 30
-          periodSeconds: 60
-          timeoutSeconds: 10
-        volumeMounts:
-          - mountPath: "/config"
-            name: config
-          - mountPath: "/downloads"
-            name: downloads
-          - mountPath: "/media"
-            name: media
+        - envFrom:
+            - configMapRef:
+                name: sonarr
+          env: []
+          image: linuxserver/sonarr
+          name: sonarr
+          ports:
+            - containerPort: 8989
+              name: webui
+          livenessProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - curl "http://localhost:8989/sonarr/api/v3/health?ApiKey=$(sed -ne '/ApiKey/{s/.*<ApiKey>\(.*\)<\/ApiKey>.*/\1/p;q;}' </config/config.xml)"
+            initialDelaySeconds: 30
+            periodSeconds: 60
+          readinessProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - curl "http://localhost:8989/sonarr/api/v3/system/status?ApiKey=$(sed -ne '/ApiKey/{s/.*<ApiKey>\(.*\)<\/ApiKey>.*/\1/p;q;}' </config/config.xml)"
+            initialDelaySeconds: 30
+            periodSeconds: 60
+            timeoutSeconds: 10
+          volumeMounts:
+            - mountPath: "/config"
+              name: config
+            - mountPath: "/downloads"
+              name: downloads
+            - mountPath: "/media"
+              name: media
       volumes:
         - name: config
           persistentVolumeClaim:
