@@ -15,8 +15,8 @@ spec:
       - createdb
     sonarr: []
   databases: # dbname: owner
-    sonarr-main: sonarr
-    sonarr-logs: sonarr
+    sonarr_main: sonarr
+    sonarr_logs: sonarr
   postgresql:
     version: "17"
     parameters:
