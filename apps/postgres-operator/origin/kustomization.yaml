@@ -1,0 +1,7 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: postgres-operator
+resources:
+  - https://github.com/zalando/postgres-operator//manifests?timeout=120&ref=6035fdd58ec1b11b5471cb4ef67eab9e6693f283 # 1.14.0

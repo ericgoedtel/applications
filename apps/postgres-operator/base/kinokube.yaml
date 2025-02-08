@@ -1,0 +1,23 @@
+---
+apiVersion: "acid.zalan.do/v1"
+kind: postgresql
+metadata:
+  name: kinokube-psql
+  namespace: kinokube
+spec:
+  teamId: kinokube
+  volume:
+    size: 20Gi
+  numberOfInstances: 1
+  users:
+    eric:
+      - superuser
+      - createdb
+    sonarr: []
+  databases: # dbname: owner
+    sonarr-main: sonarr
+    sonarr-logs: sonarr
+  postgresql:
+    version: "17"
+    parameters:
+      password_encryption: scram-sha-256
