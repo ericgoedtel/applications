@@ -6,4 +6,4 @@ metadata:
   name: postgres-operator
 data:
   debug_logging: "false"
-  inherited_labels: app.kubernetes.io/instance
+  enable_owner_references: true
