@@ -4,11 +4,15 @@ kind: ConfigMap
 metadata:
   name: sonarr
   annotations:
-    argocd.argoproj.io/sync-wave: "-1"  # sync this before deploy 
+    argocd.argoproj.io/sync-wave: "-1" # sync this before deploy
 data:
+  PGID: "65534"
+  PUID: "65534" # nobody
   SONARR__AUTH__ENABLED: "false"
   SONARR__AUTH__METHOD: "none"
   SONARR__AUTH__REQUIRED: "DisabledForLocalAddresses"
+  SONARR__POSTGRES__HOST: kinokube-psql.kinokube
+  SONARR__POSTGRES__LOGDB: sonarr_logs
+  SONARR__POSTGRES__MAINDB: sonarr_main
+  SONARR__POSTGRES__USER: sonarr
   SONARR__SERVER__URLBASE: "/sonarr"
-  PUID: "65534" # nobody
-  PGID: "65534"
