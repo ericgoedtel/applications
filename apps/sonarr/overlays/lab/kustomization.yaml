@@ -14,4 +14,20 @@ patches:
         value: 2
       - op: replace
         path: /spec/replicas
-        value: 0
+        value: 1
+  # Patch in postgres configuration values. This may be portable since we're using in-cluster hostnames. Merge back upwards if possible
+  - target:
+      kind: ConfigMap
+      name: sonarr
+    path: configmap.yaml
+  - target:
+      kind: Deployment
+    patch: |
+      - op: add
+        path: /spec/template/spec/containers/0/env
+        value:
+          - name: SONARR__POSTGRES__PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: sonarr.kinokube-psql.credentials.postgresql.acid.zalan.do
+                key: password
