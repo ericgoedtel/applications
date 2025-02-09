@@ -8,11 +8,7 @@ spec:
   teamId: kinokube
   volume:
     size: 20Gi
-  storageClass: nfs-legacy-dynamic
-  # nfs shenanigans
-  spiloRunAsUser: 65534
-  spiloRunAsGroup: 65534
-  spiloFSGroup: 65534
+    storageClass: nfs-legacy-dynamic
   numberOfInstances: 1
   users:
     eric:
