@@ -19,7 +19,12 @@ spec:
         - envFrom:
             - configMapRef:
                 name: sonarr
-          env: []
+          env:
+            - name: SONARR__POSTGRES__PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: sonarr.kinokube-psql.credentials.postgresql.acid.zalan.do
+                  key: password
           image: linuxserver/sonarr
           name: sonarr
           ports:
