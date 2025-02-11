@@ -36,3 +36,22 @@ spec:
     - nfsvers=4.1
     - async
     - noatime
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-postgresql
+spec:
+  capacity:
+    storage: 20Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  storageClassName: nfs-legacy-dynamic
+  nfs:
+    path: /srv/shares/databases/lab
+    server: 192.168.86.21
+  mountOptions:
+    - nfsvers=4.1
+    - async
+    - noatime

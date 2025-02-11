@@ -24,3 +24,16 @@ spec:
       storage: 15Ti
   volumeName: nfs-media
   storageClassName: nfs-legacy-dynamic
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nfs-postgresql
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 20Gi
+  volumeName: nfs-postgresql
+  storageClassName: nfs-legacy-dynamic

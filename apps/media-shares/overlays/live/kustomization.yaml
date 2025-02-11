@@ -4,3 +4,12 @@ kind: Kustomization
 
 resources:
   - ../../base/
+
+patches:
+  - target:
+      kind: PersistentVolume
+      name: nfs-postgresql
+    patch: |
+      - op: replace
+        path: /spec/nfs/path
+        value: /srv/shares/databases/live
