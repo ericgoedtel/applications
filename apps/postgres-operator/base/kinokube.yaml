@@ -10,7 +10,6 @@ spec:
     size: 20Gi
     # class and group enable mounting psql storage from nfs
     storageClass: nfs-legacy-dynamic
-  spiloFSGroup: 103
   numberOfInstances: 1
   users:
     eric:
