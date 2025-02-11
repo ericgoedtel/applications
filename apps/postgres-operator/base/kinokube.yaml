@@ -10,6 +10,9 @@ spec:
     size: 20Gi
     # class and group enable mounting psql storage from nfs
     storageClass: nfs-legacy-dynamic
+    selector:
+      matchLabels:
+        project: kinokube
   numberOfInstances: 1
   users:
     eric:
@@ -23,3 +26,15 @@ spec:
     version: "17"
     parameters:
       password_encryption: scram-sha-256
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nfs-postgresql
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 20Gi
+  storageClassName: nfs-legacy-dynamic

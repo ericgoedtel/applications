@@ -40,7 +40,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: nfs-postgresql
+  name: nfs-kinokube-postgresql
 spec:
   capacity:
     storage: 20Gi
@@ -49,7 +49,7 @@ spec:
     - ReadWriteMany
   storageClassName: nfs-legacy-dynamic
   nfs:
-    path: /srv/shares/databases/lab
+    path: /srv/shares/databases/lab/kinokube
     server: 192.168.86.21
   mountOptions:
     - nfsvers=4.1
