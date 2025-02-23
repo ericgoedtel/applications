@@ -52,9 +52,6 @@ spec:
             - mountPath: /config
               name: config
       volumes:
-        # - name: config-old
-        #   persistentVolumeClaim:
-        #     claimName: sonarr-config
         - name: downloads
           persistentVolumeClaim:
             claimName: nfs-downloads
