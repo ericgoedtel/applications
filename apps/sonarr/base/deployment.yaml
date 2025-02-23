@@ -43,19 +43,24 @@ spec:
             periodSeconds: 60
             timeoutSeconds: 10
           volumeMounts:
-            - mountPath: "/config"
-              name: config
+            # - mountPath: "/config"
+            #   name: config-old
             - mountPath: "/downloads"
               name: downloads
             - mountPath: "/media"
               name: media
+            - mountPath: /config
+              name: config
       volumes:
-        - name: config
-          persistentVolumeClaim:
-            claimName: sonarr-config
+        # - name: config-old
+        #   persistentVolumeClaim:
+        #     claimName: sonarr-config
         - name: downloads
           persistentVolumeClaim:
             claimName: nfs-downloads
         - name: media
           persistentVolumeClaim:
             claimName: nfs-media
+        - name: config
+          persistentVolumeClaim:
+            claimName: sonarr-config-iscsi
