@@ -35,6 +35,8 @@ spec:
               name: media
             - mountPath: "/config"
               name: config
+            - mountPath: "/tmp/config"
+              name: config-iscsi
       volumes:
         - name: media
           persistentVolumeClaim:
@@ -42,3 +44,6 @@ spec:
         - name: config
           persistentVolumeClaim:
             claimName: plex-config
+        - name: config-iscsi
+          persistentVolumeClaim:
+            claimName: plex-config-iscsi
