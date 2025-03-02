@@ -49,6 +49,8 @@ spec:
               name: downloads
             - mountPath: "/media"
               name: media
+            - mountPath: "/mnt/config"
+              name: sonarr-config-iscsi
       volumes:
         - name: config
           persistentVolumeClaim:
@@ -59,3 +61,6 @@ spec:
         - name: media
           persistentVolumeClaim:
             claimName: nfs-media
+        - name: config-iscsi
+          persistentVolumeClaim:
+            claimName: sonarr-config-iscsi

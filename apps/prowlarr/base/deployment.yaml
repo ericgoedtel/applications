@@ -44,7 +44,12 @@ spec:
           volumeMounts:
             - mountPath: "/config"
               name: config
+            - mountPath: "/mnt/config"
+              name: prowlarr-config-iscsi
       volumes:
         - name: config
           persistentVolumeClaim:
             claimName: prowlarr-config
+        - name: config-iscsi
+          persistentVolumeClaim:
+            claimName: prowlarr-config-iscsi
