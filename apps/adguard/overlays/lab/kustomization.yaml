@@ -34,6 +34,9 @@ patches:
       - op: add
         path: /spec/revisionHistoryLimit
         value: 2
+      - op: replace
+        path: /spec/replicas
+        value: 0
   - target:
       kind: Certificate
     patch: |
