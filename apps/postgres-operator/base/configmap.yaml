@@ -1,9 +1,0 @@
----
-# Source: https://raw.githubusercontent.com/zalando/postgres-operator/6035fdd58ec1b11b5471cb4ef67eab9e6693f283/manifests/configmap.yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: postgres-operator
-data:
-  debug_logging: "false"
-  enable_owner_references: true

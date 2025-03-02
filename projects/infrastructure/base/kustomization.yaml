@@ -26,4 +26,3 @@ patches:
                 - service: external-dns
                 - service: cert-manager
                 - service: traefik
-                - service: postgres-operator
