@@ -9,3 +9,11 @@ patches:
       - op: add
         path: /spec/revisionHistoryLimit
         value: 2
+  - target:
+      kind: StorageClass
+    patch: |
+      - op: replace
+        path: /parameters
+        value:
+          server: 192.168.86.45
+          share: /srv/shares/nfs
