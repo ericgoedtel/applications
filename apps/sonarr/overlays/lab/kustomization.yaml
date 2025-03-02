@@ -16,6 +16,19 @@ patches:
         path: /spec/replicas
         value: 0
   - target:
+      kind: Deployment
+    patch: |
+      - op: replace
+        path: /spec/template/spec/volumes/3
+        value:
+          name: config
+          persistentVolumeClaim:
+            claimName: sonarr-config-iscsi
+      - op: remove
+        path: /spec/template/spec/containers/0/volumeMounts/3
+      - op: remove
+        path: /spec/template/spec/volumes/0
+  - target:
       # TODO: Move this to a label selector at some point
       kind: PersistentVolume
     patch: |
