@@ -17,27 +17,27 @@ spec:
     spec:
       containers:
         - envFrom:
-          - configMapRef:
-              name: radarr
+            - configMapRef:
+                name: radarr
           image: linuxserver/radarr
           name: radarr
           ports:
-          - containerPort: 7878
-            name: webui
+            - containerPort: 7878
+              name: webui
           livenessProbe:
             exec:
               command:
-              - /bin/sh
-              - -c
-              - curl "http://localhost:7878/radarr/api/v3/health?ApiKey=$(sed -ne '/ApiKey/{s/.*<ApiKey>\(.*\)<\/ApiKey>.*/\1/p;q;}' </config/config.xml)"
+                - /bin/sh
+                - -c
+                - curl "http://localhost:7878/radarr/api/v3/health?ApiKey=$(sed -ne '/ApiKey/{s/.*<ApiKey>\(.*\)<\/ApiKey>.*/\1/p;q;}' </config/config.xml)"
             initialDelaySeconds: 30
             periodSeconds: 60
           readinessProbe:
             exec:
               command:
-              - /bin/sh
-              - -c
-              - curl "http://localhost:7878/radarr/api/v3/system/status?ApiKey=$(sed -ne '/ApiKey/{s/.*<ApiKey>\(.*\)<\/ApiKey>.*/\1/p;q;}' </config/config.xml)"
+                - /bin/sh
+                - -c
+                - curl "http://localhost:7878/radarr/api/v3/system/status?ApiKey=$(sed -ne '/ApiKey/{s/.*<ApiKey>\(.*\)<\/ApiKey>.*/\1/p;q;}' </config/config.xml)"
             initialDelaySeconds: 30
             periodSeconds: 60
             timeoutSeconds: 10
@@ -49,17 +49,17 @@ spec:
             - mountPath: "/media"
               name: media
             - mountPath: "/mnt/config"
-              name: radarr-config-iscsi
-        volumes:
-          - name: config
-            persistentVolumeClaim:
-              claimName: radarr-config
-          - name: downloads
-            persistentVolumeClaim:
-              claimName: nfs-downloads
-          - name: media
-            persistentVolumeClaim:
-              claimName: nfs-media
-          - name: config-iscsi
-            persistentVolumeClaim:
-              claimName: radarr-config-iscsi
+              name: config-iscsi
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: radarr-config
+        - name: downloads
+          persistentVolumeClaim:
+            claimName: nfs-downloads
+        - name: media
+          persistentVolumeClaim:
+            claimName: nfs-media
+        - name: config-iscsi
+          persistentVolumeClaim:
+            claimName: radarr-config-iscsi

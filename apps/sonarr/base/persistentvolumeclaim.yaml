@@ -22,7 +22,6 @@ spec:
   accessModes:
     - ReadWriteOnce
   storageClassName: iscsi-static
-  volumeName: sonarr-config-iscsi
   iscsi:
     targetPortal: 192.168.86.21:3260
     iqn: iqn.2025-02.cloud.amolicob:sonarr
