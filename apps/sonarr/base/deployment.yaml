@@ -50,7 +50,7 @@ spec:
             - mountPath: "/media"
               name: media
             - mountPath: "/mnt/config"
-              name: sonarr-config-iscsi
+              name: config-iscsi
       volumes:
         - name: config
           persistentVolumeClaim:
