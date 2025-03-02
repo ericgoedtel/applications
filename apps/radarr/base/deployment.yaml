@@ -48,18 +48,13 @@ spec:
               name: downloads
             - mountPath: "/media"
               name: media
-            - mountPath: "/mnt/config"
-              name: config-iscsi
       volumes:
-        - name: config
-          persistentVolumeClaim:
-            claimName: radarr-config
         - name: downloads
           persistentVolumeClaim:
             claimName: nfs-downloads
         - name: media
           persistentVolumeClaim:
             claimName: nfs-media
-        - name: config-iscsi
+        - name: config
           persistentVolumeClaim:
             claimName: radarr-config-iscsi
