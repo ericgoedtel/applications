@@ -26,6 +26,13 @@ patches:
         path: /spec/replicas
         value: 0
   - target:
+      # TODO: Move this to a label selector at some point
+      kind: PersistentVolume
+    patch: |
+      - op: replace
+        path: /spec/iscsi/targetPortal
+        value: 192.168.86.45:3260
+  - target:
       kind: Certificate
     patch: |
       - op: replace
