@@ -36,14 +36,14 @@ spec:
             - mountPath: "/config"
               name: config
             - mountPath: "/tmp/config"
-              name: config-iscsi
+              name: config-nfs
       volumes:
         - name: media
           persistentVolumeClaim:
             claimName: nfs-media
-        - name: config
+        - name: config-nfs
           persistentVolumeClaim:
             claimName: plex-config
-        - name: config-iscsi
+        - name: config
           persistentVolumeClaim:
             claimName: plex-config-iscsi
