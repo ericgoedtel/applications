@@ -24,23 +24,11 @@ spec:
           ports:
             - containerPort: 7878
               name: webui
-          livenessProbe:
-            exec:
-              command:
-                - /bin/sh
-                - -c
-                - curl "http://localhost:7878/radarr/api/v3/health?ApiKey=$(sed -ne '/ApiKey/{s/.*<ApiKey>\(.*\)<\/ApiKey>.*/\1/p;q;}' </config/config.xml)"
-            initialDelaySeconds: 30
-            periodSeconds: 60
-          readinessProbe:
-            exec:
-              command:
-                - /bin/sh
-                - -c
-                - curl "http://localhost:7878/radarr/api/v3/system/status?ApiKey=$(sed -ne '/ApiKey/{s/.*<ApiKey>\(.*\)<\/ApiKey>.*/\1/p;q;}' </config/config.xml)"
-            initialDelaySeconds: 30
-            periodSeconds: 60
-            timeoutSeconds: 10
+          startupProbe:
+            httpGet:
+              path: /ping
+              port: webui
+            periodSeconds: 30
           volumeMounts:
             - mountPath: "/config"
               name: config
