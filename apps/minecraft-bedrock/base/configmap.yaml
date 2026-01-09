@@ -1,0 +1,18 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: minecraft-bedrock
+  labels:
+    role: service-config
+    app: minecraft-bedrock
+data:
+  # Find more options at https://github.com/itzg/docker-minecraft-bedrock-server#server-properties
+  EULA: "TRUE"
+  GAMEMODE: "creative"
+  DIFFICULTY: "peaceful"
+  DEFAULT_PLAYER_PERMISSION_LEVEL: "member"
+  LEVEL_NAME: "amolicob"
+  SERVER_NAME: "amolicob"
+  ALLOW_CHEATS: "true" # Options: true, false
+  MAX_PLAYERS: "5"
