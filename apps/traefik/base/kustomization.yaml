@@ -8,3 +8,4 @@ resources:
   - certificate.yaml
   - tlsstore.yaml
   - middlewares.yaml
+  - ports.yaml
