@@ -12,6 +12,13 @@ spec:
       websecure:
         middlewares:
           - kube-system-security-headers@kubernetescrd
+      minecraft:
+        port: 19132
+        exposedPort: 19132
+        expose:
+          default: true
+        protocol: UDP
     service:
+      single: false
       annotations:
         external-dns.alpha.kubernetes.io/hostname: amolicob.cloud
