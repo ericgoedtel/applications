@@ -1,0 +1,13 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRouteUDP
+metadata:
+  name: minecraft-bedrock
+
+spec:
+  entryPoints:
+    - minecraft
+  routes:
+    - services:
+        - name: minecraft-bedrock # The name of the Kubernetes Service to route to
+          port: 19132 # The port of the Kubernetes Service to route to

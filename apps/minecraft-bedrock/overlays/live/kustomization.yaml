@@ -1,0 +1,15 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../../base/
+
+patches:
+  - target:
+      kind: ConfigMap
+      name: minecraft-bedrock
+    patch: |
+      - op: add
+        path: /data/VERSION
+        value: "1.21.132.1"
