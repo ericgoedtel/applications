@@ -5,6 +5,8 @@ metadata:
   name: traefik
 spec:
   valuesContent: |-
+    additionalArguments:
+      - "--entryPoints.minecraft.udp.timeout=10s"
     ports:
       web:
         redirectTo:
