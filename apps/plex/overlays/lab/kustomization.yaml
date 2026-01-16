@@ -16,6 +16,9 @@ patches:
       - op: replace
         path: /metadata/annotations/external-dns.alpha.kubernetes.io~1target
         value: lab.amolicob.cloud
+      - op: replace
+        path: /metadata/annotations/external-dns.alpha.kubernetes.io~1hostname
+        value: watch.lab.amolicob.cloud
   - target:
       kind: Deployment
     patch: |
