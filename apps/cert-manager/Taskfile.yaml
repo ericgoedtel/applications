@@ -8,7 +8,7 @@ tasks:
         cert-manager jetstack/cert-manager
         --values {{.ROOT_DIR}}/values.yaml
         --namespace cert-manager
-        --version v1.16.2
+        --version v1.19.2
         --set crds.enabled=true 
         > "{{.ROOT_DIR}}/base/resources.yaml"
     sources:
