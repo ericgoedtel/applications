@@ -7,6 +7,5 @@ namespace: minecraft-bedrock
 resources:
   - configmap.yaml
   - ingress.yaml
-  - persistentvolumeclaim.yaml
   - service.yaml
   - statefulset.yaml
