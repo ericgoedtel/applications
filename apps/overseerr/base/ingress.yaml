@@ -1,17 +1,22 @@
 ---
+# Normal path rewrite
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: overseerr
+  annotations:
+    external-dns.alpha.kubernetes.io/target: amolicob.cloud
 spec:
-  entryPoints: []
+  entryPoints:
+    - websecure
   routes:
-  - kind: Rule
-    match: PathPrefix(`/overseerr`)
-    middlewares: []
-    priority: 0
-    services:
-    - kind: Service
-      name: overseerr
-      namespace: kinokube
-      port: webui
+    - kind: Rule
+      match: Host(`ask.amolicob.cloud`)
+      priority: 0
+      services:
+        - kind: Service
+          name: overseerr
+          namespace: kinokube
+          port: webui
+  tls:
+    secretName: overseerr

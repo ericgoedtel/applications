@@ -21,9 +21,10 @@ patches:
         value:
           list:
             elements:
+                - service: media-shares
+                - service: overseerr
                 - service: plex
                 - service: prowlarr
                 - service: radarr
                 - service: sonarr
                 - service: transmission
-                - service: media-shares
