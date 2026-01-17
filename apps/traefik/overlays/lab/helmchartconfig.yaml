@@ -22,5 +22,3 @@ spec:
         protocol: UDP
     service:
       single: false
-      annotations:
-        external-dns.alpha.kubernetes.io/hostname: lab.amolicob.cloud
