@@ -4,7 +4,7 @@ kind: Service
 metadata:
   name: dns-anchor # just exists for external-dns to point to
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: lab.amolicob.cloud
+    external-dns.alpha.kubernetes.io/hostname: amolicob.cloud
 spec:
   type: LoadBalancer
   ports:
