@@ -11,7 +11,7 @@ spec:
     - ReadWriteOnce
   storageClassName: iscsi-static
   iscsi:
-    targetPortal: 192.168.86.21:3260
+    targetPortal: amolicob.cloud:3260
     iqn: iqn.2025-02.cloud.amolicob:prowlarr
     lun: 1
     fsType: ext4
