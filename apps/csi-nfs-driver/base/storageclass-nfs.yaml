@@ -5,7 +5,7 @@ metadata:
   name: nfs-legacy-dynamic  # Eventually this will be rebuilt or replaced
 provisioner: nfs.csi.k8s.io
 parameters:
-  server: amolicob.cloud
+  server: data.amolicob.cloud
   share: /srv/shares/
 reclaimPolicy: Retain
 allowVolumeExpansion: true
