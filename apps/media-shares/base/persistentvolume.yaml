@@ -12,7 +12,7 @@ spec:
   storageClassName: nfs-legacy-dynamic
   nfs:
     path: /opt/htpc/downloads
-    server: 192.168.86.21
+    server: amolicob.cloud
   mountOptions:
     - nfsvers=4.1
     - async
@@ -31,7 +31,7 @@ spec:
   storageClassName: nfs-legacy-dynamic
   nfs:
     path: /opt/htpc/media
-    server: 192.168.86.21
+    server: amolicob.cloud
   mountOptions:
     - nfsvers=4.1
     - async
