@@ -4,3 +4,7 @@ kind: Kustomization
 
 resources:
   - ../../base/
+
+images:
+  - name: linuxserver/plex
+    newTag: 1.43.3
