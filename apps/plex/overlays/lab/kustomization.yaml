@@ -20,11 +20,8 @@ patches:
       kind: Deployment
     patch: |
       - op: add
-        path: /spec/revisionHistoryLimit
-        value: 2
-      - op: replace
-        path: /spec/replicas
-        value: 0
+        path: /spec/template/spec/containers/0/imagePullPolicy
+        value: Always
   - target:
       # TODO: Move this to a label selector at some point
       kind: PersistentVolume
